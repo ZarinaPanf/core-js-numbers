@@ -206,11 +206,16 @@ function roundToPowerOfTen(num, pow) {
  *   16 => false
  *   17 => true
  */
-function isPrime(n) {
-  for (let i = 2, s = Math.sqrt(n); i <= s; i++) {
+function isPrime(n, divisor = 2) {
+  /* for (let i = 2, s = Math.sqrt(n); i <= s; i + 1) {
     if (n % i === 0) return false;
   }
-  return n > 1;
+  return n > 1; */
+  if (n < 2) return false;
+  if (n === 2) return true;
+  if (n % divisor === 0) return false;
+  if (divisor * divisor > n) return true;
+  return isPrime(n, divisor + 1);
 }
 
 /**
